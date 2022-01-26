@@ -65,12 +65,8 @@ SaveOptions.EmbedICCProfile = true;
 SaveOptions.Version = cdrVersion15;
 SaveOptions.KeepAppearance = true;
 
+let _name = host.ActiveDocument.FullFileName;
 host.ActivePage.FindShapes(undefined, cdrTextShape, true).ConvertToCurves();
-host.ActiveDocument.PublishToPDF(
-	"C:\\Users\\bo2\\Desktop\\New folder\\Q1'22 CPS AMD BF EL RYZEN Instore @Westgate - Flyer.pdf"
-);
-host.ActiveDocument.SaveAs(
-	"C:\\Users\\bo2\\Desktop\\New folder\\Q1'22 CPS AMD BF EL RYZEN Instore @Westgate - Flyer.cdr",
-	SaveOptions
-);
+host.ActiveDocument.PublishToPDF(`${_name.substring(0, _name.length - 3)}pdf`);
+host.ActiveDocument.SaveAs(_name, SaveOptions);
 host.ActiveDocument.Close();
